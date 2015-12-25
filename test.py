@@ -7,7 +7,7 @@ from pprint import pprint
 
 ###FOR CRAWLING THE GLASSDOOR API
 for i in range(22,23):
-	url = "http://api.glassdoor.com/api/api.htm?t.p=49299&t.k=fXqLQtzbYfO&format=json&v=1&action=employers&q=Software&city=San_Francisco&pn=%d"%(i) 
+	url = "http://api.glassdoor.com/api/api.htm?t.p=49299&t.k=apikey&format=json&v=1&action=employers&q=Software&city=San_Francisco&pn=%d"%(i) 
 	hdr = {'User-Agent': 'Mozilla/5.0'}
 	print 'URL: %s' % (url)
 	req = urllib2.Request(url,headers=hdr)
@@ -36,7 +36,7 @@ for i in range(200,201):
 	pprint(company.company_id)
 	companyPermalink = company.name.replace(" ", "-").lower()
 	# print companyPermalink
-	url = "https://api.crunchbase.com/v/3/organizations/%s?user_key=daa3c097551d2db8b278f34597499ab9"%(companyPermalink)
+	url = "https://api.crunchbase.com/v/3/organizations/%s?user_key=apikey"%(companyPermalink)
 	print 'URL: %s' % (url)
 	req = urllib2.Request(url)
 	response = urllib2.urlopen(req)
