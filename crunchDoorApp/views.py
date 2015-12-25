@@ -70,10 +70,10 @@ def detail(request, company_id):
 			# print currCompany.extra_id
 			#funding comparison
 			if c.extra_id == currCompany.extra_id:
-				continue
-			print "-------"
-			print c.extra_id
-			print c.permalink
+			# 	continue
+			# print "-------"
+			# print c.extra_id
+			# print c.permalink
 			diff = currCompany.funding - c.funding
 			diff_funding = abs(diff)
 			# print diff_funding
@@ -105,7 +105,7 @@ def detail(request, company_id):
 					employees_points += 2
 				elif diff_employees >= 5000 and diff_employees < 10000:
 					employees_points += 1
-				print employees_points
+				# print employees_points
 			glasscompany = get_object_or_404(Company, pk=c.extra_id)
 			diff3 = company.average - glasscompany.average
 			diff_reviews = abs(diff3)
@@ -120,7 +120,7 @@ def detail(request, company_id):
 				reviews_points += 2
 			elif diff_reviews <= 2.00:
 				reviews_points += 1
-			print reviews_points
+			# print reviews_points
 			if c.founded and currCompany.founded is not None:
 				c_founded = c.founded[0:4]
 				# print c_founded
@@ -139,8 +139,8 @@ def detail(request, company_id):
 				elif diff_founded < 50:
 					founded_points +=1
 			total_points = funding_points+employees_points+reviews_points+founded_points
-			print total_points
-			print glasscompany.name
+			# print total_points
+			# print glasscompany.name
 			indices.append(c.extra_id)
 			points.append(total_points)
 
@@ -170,12 +170,12 @@ def detail(request, company_id):
 				var3 = index
 			index += 1 
 
-		print max1 # max total_points
-		print indices[var1]
-		print max2
-		print indices[var2]
-		print max3
-		print indices[var3]# Index of the company that has the max total_points
+		# print max1 # max total_points
+		# print indices[var1]
+		# print max2
+		# print indices[var2]
+		# print max3
+		# print indices[var3]# Index of the company that has the max total_points
 
 		##Save the similar companies into database so iteration does not have to happen again
 		currCompany.similarcompany1 = indices[var1]
