@@ -6,7 +6,8 @@ import json
 from pprint import pprint
 
 ###FOR CRAWLING THE GLASSDOOR API
-for i in range(22,23):
+#Need to skip the pages that return an error!
+for i in range(0,23):
 	url = "http://api.glassdoor.com/api/api.htm?t.p=49299&t.k=apikey&format=json&v=1&action=employers&q=Software&city=San_Francisco&pn=%d"%(i) 
 	hdr = {'User-Agent': 'Mozilla/5.0'}
 	print 'URL: %s' % (url)
