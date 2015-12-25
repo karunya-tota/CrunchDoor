@@ -1,0 +1,1 @@
+web: gunicorn crunchdoor.wsgi --log-file -

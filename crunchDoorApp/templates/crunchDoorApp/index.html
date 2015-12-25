@@ -1,0 +1,69 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="stylesheet" href="{% static 'font-awesome.min.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<form class="list-form form-inline">
+  <div class="form-group">
+    <input type="text" class="form-control" id="searchText" value="{{query}}">
+  </div>
+  <select id="orderBy" class="form-control">
+  <option {{order1}} value="name">Sort: Name A-Z</option>
+  <option {{order2}} value="-name">Sort: Name Z-A</option>
+  <option {{order3}} value="-average">Sort: Rating +</option>
+  <option {{order4}} value="average">Sort: Rating -</option>
+</select>
+  <button id="update-filter" type="submit" class="btn btn-default">Search</button>
+</form>
+<div class="list">
+	
+{% if company_list %}
+
+    {% for company in company_list %}
+    <a class="list-item-link" href="{% url 'company:detail' company.company_id %}">
+        <div class="list-item">
+          <img class="logo" src="{{company.logo}}">
+          <h3>{{ company.name }}</h3>
+          <span class="stars">{{company.average}} 
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+        </span><div style="width:50px; margin-left:calc(68px * {{company.average}} /5 - 65.6px);" class="star-hider"></div>
+        </div>
+        </a>
+    {% endfor %}
+    <!-- <a href="{% url "company:create" %}">New Company</a> -->
+{% else %}
+    <p>No Companies in the database</p>
+{% endif %}
+
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if company_list.has_previous %}
+            <a href="?page={{ company_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ company_list.number }} of {{ company_list.paginator.num_pages }}.
+        </span>
+
+        {% if company_list.has_next %}
+            <a href="?page={{ company_list.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+<script src="{% static 'scripts.js' %}"></script>
+<!-- 
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrhJCRV06mysDpW25HhK1Cc49f-O79F-Y&signed_in=false&callback=initMap"
+        async defer>
+</script>
+ -->
