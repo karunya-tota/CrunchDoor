@@ -8,4 +8,4 @@ Test.py contains the script for crawling the Glassdoor and CrunchBase API's part
 
 This web application is hosted at https://crunchdoor.herokuapp.com/app.
 
-<img src "crunchdoor.jpg">
+<img src "crunchdoor.jpg"/>
