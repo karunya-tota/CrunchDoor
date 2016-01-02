@@ -7,3 +7,5 @@ In order to run the application, type 'python manage.py runserver' into command 
 Test.py contains the script for crawling the Glassdoor and CrunchBase API's particularly for San Francisco companies.
 
 This web application is hosted at https://crunchdoor.herokuapp.com/app.
+
+<img src "crunchdoor.jpg">
